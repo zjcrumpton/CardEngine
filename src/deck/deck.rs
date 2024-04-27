@@ -44,4 +44,38 @@ impl Deck {
     pub fn deal(&mut self) -> Option<Card> {
         self.cards.pop()
     }
+
+    pub fn len(&mut self) -> usize {
+        self.cards.len()
+    }
+
+    pub fn cards(&self) -> &[Card] {
+        &self.cards
+    }
+}
+
+mod tests {
+    use crate::card::card::Card;
+    use crate::deck::deck::Deck;
+
+    #[test]
+    fn deck_contains_52_cards() {
+        let mut deck = Deck::new();
+        assert_eq!(deck.len(), 52)
+    }
+
+    #[test]
+    fn deal_reduces_deck_size() {
+        let mut deck = Deck::new();
+        deck.deal();
+        assert_eq!(deck.len(), 51);
+    }
+
+    #[test]
+    fn shuffle_changes_order() {
+        let mut deck: Deck = Deck::new();
+        let before_shuffle_state: Vec<Card> = deck.cards.clone();
+        deck.shuffle();
+        assert_ne!(before_shuffle_state, deck.cards())
+    }
 }
