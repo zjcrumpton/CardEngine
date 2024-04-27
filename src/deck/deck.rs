@@ -54,6 +54,7 @@ impl Deck {
     }
 }
 
+#[cfg(test)]
 mod tests {
     use crate::card::card::Card;
     use crate::deck::deck::Deck;

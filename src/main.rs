@@ -2,6 +2,7 @@ use crate::{card::card::Card, deck::deck::Deck};
 
 mod card;
 mod deck;
+pub mod poker;
 
 fn main() {
     let mut deck: Deck = Deck::new();
