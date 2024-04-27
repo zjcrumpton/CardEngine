@@ -32,6 +32,11 @@ impl Player {
         self.hand = Some(new_hand);
     }
 
+    pub fn increase_stack(&mut self, amount: u32) -> u32 {
+        self.stack += amount;
+        self.stack
+    }
+
     pub fn decrease_stack(&mut self, amount: u32) -> Result<u32, StackError> {
         if amount > self.stack {
             Err(StackError::InsufficientFunds(amount - self.stack))
@@ -102,5 +107,15 @@ mod tests {
         }
 
         assert_eq!(player.stack(), 1000);
+    }
+
+    #[test]
+    fn can_increase_stack() {
+        let mut player: Player = Player::new(1000);
+
+        let updated_stack_size = player.increase_stack(500);
+
+        assert_eq!(updated_stack_size, 1500);
+        assert_eq!(player.stack(), updated_stack_size);
     }
 }
