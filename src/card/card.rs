@@ -1,6 +1,7 @@
 use super::{rank::Rank, suit::Suit};
 use std::fmt;
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct Card {
     pub rank: Rank,
     pub suit: Suit,

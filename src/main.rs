@@ -1,12 +1,15 @@
-use crate::card::{card::Card, rank::Rank, suit::Suit};
+use crate::{card::card::Card, deck::deck::Deck};
 
 mod card;
+mod deck;
 
 fn main() {
-    let card = Card {
-        rank: Rank::Ace,
-        suit: Suit::Hearts,
-    };
+    let mut deck: Deck = Deck::new();
+    deck.shuffle();
 
-    println!("You have drawn a/an {}!", card);
+    let card: Option<Card> = deck.deal();
+    match card {
+        Some(card) => println!("You drew a/an {}", card),
+        None => println!("The deck was empty!"),
+    }
 }
