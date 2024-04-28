@@ -16,7 +16,6 @@ impl Poker {
         // it is impossible to play
         // poker with more than 22 people
         if max_players > 22 {
-            // it is impossible to
             panic!();
         }
 
